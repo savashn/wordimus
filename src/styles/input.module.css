@@ -1,0 +1,90 @@
+.label {
+    font-size: 2rem;
+}
+
+.textarea {
+    height: 25rem;
+}
+
+.input {
+    font-family: inherit;
+    width: 70%;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    border: 0.1rem solid #ccc;
+    border-radius: 4px;
+    background-color: #444;
+    color: #fff;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, border-width 0.1s linear;
+}
+
+.input::placeholder {
+    color: #ccc;
+}
+
+.input:focus {
+    outline: none;
+    border-color: rgb(21, 117, 69);
+}
+
+.button {
+    border: 2px solid darkgreen;
+    background-color: transparent;
+    border-radius: 10px;
+    width: 7rem;
+    margin: 2rem 0rem;
+    padding: 0.7rem;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-style: inherit;
+}
+
+.button:hover {
+    background-color: darkgreen;
+    border-color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 70%;
+    gap: 0.5rem;
+}
+
+.selectBtn {
+    border: 2px solid darkgreen;
+    background-color: transparent;
+    border-radius: 15px;
+    padding: 0.7rem;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    text-decoration: inherit;
+    display: inline-block;
+    max-width: 100%;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.3s;
+}
+
+.selected {
+    background-color: darkgreen !important;
+}
+
+@media (max-width: 768px) {
+
+    .input {
+        width: 100%;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+}

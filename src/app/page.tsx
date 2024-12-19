@@ -1,95 +1,94 @@
-import Image from "next/image";
+import Header from "@/components/partials/Header";
 import styles from "./page.module.css";
+import postStyles from '@/styles/post.module.css';
+import { Post } from "@/types/interfaces";
+import Link from "next/link";
+import Image from "next/image";
+import ContentProcessor from "@/utils/ContentProcessor";
 
-export default function Home() {
+export default async function Home() {
+  const api = process.env.API_URI;
+
+  const res = await fetch(`${api}/user`);
+
+  const data = await res.json();
+
+  const posts: Post[] = ContentProcessor.processPosts(data);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <Header />
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+      <div className={styles.home}>
+
+        <div className={styles.h1}>
+          JOIN TO TURN YOUR THOUGHTS INTO WORDS
         </div>
-      </main>
+
+        <hr />
+
+        <div className={styles.posts}>
+
+          {posts.map((post, idx) => (
+            <div key={idx} className={styles.card}>
+
+              <div className={styles.cardHeader}>
+
+                <Link href={`/user/${post.username}`} className={styles.link}>
+
+                  <div className={styles.pictureWrapper}>
+                    <Image
+                      src="/profile.jpg"
+                      width={500}
+                      height={500}
+                      alt="Picture of the author"
+                      className={styles.picture}
+                    />
+                  </div>
+
+                </Link>
+
+                <Link href={`/user/${post.username}`} className={styles.author}>
+
+                  {post.author}
+
+                </Link>
+
+                <p className={styles.date}>
+                  {new Date(post.createdAt).toLocaleDateString('en-GB')}
+                </p>
+
+              </div>
+
+              <hr />
+
+              <div className={styles.cardBody}>
+
+                <Link href={`/user/${post.username}/posts/${post.slug}`} className={styles.link}>
+
+                  <h2 className={styles.postHeader}>{post.header}</h2>
+                  <h3 style={{ textDecoration: 'underline', fontStyle: 'italic' }}>Reading time: {post.readingTime} minute</h3>
+
+                </Link>
+
+                <br />
+
+                <p style={{ marginBottom: '1rem' }}>{post.content}</p>
+
+              </div>
+
+            </div>
+          ))}
+
+        </div>
+
+      </div >
+
       <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        <p className={styles.footerContent}>
+          Wordimus &copy; 2024 All rights reserved.
+        </p>
       </footer>
-    </div>
+    </>
   );
 }

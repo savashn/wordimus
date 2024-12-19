@@ -1,0 +1,150 @@
+.profileContainer {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.pictureWrapper {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    cursor: pointer;
+}
+
+.picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.name {
+    margin-top: 1rem;
+    font-size: 2rem;
+}
+
+.username {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.btnContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
+
+.btn {
+    border: 2px solid darkgreen;
+    border-radius: 15px;
+    margin: 0rem 0.3rem;
+    padding: 0.7rem;
+    color: white;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: darkgreen;
+    border-color: white;
+}
+
+.cardContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 15rem;
+}
+
+.card {
+    background-color: #232930;
+    padding: 2rem;
+    border: 2px solid white;
+    border-radius: 0 0 30px 30px;
+    text-align: center;
+}
+
+.date {
+    margin-top: -1rem;
+}
+
+.header {
+    font-size: 1.5rem;
+    margin: 0.5rem 0rem;
+    font-weight: bold;
+}
+
+.readingTime {
+    margin-bottom: 2rem;
+}
+
+.lastPublishes {
+    font-size: 3rem;
+    text-align: center;
+    margin: 3rem 0rem;
+}
+
+.link {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+
+    .lastPublishes {
+        font-size: 2rem;
+    }
+
+    .cardContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card {
+        background-color: #232930;
+        padding: 0.5rem 1rem;
+        border: 2px solid white;
+        margin-bottom: 1rem;
+        border-radius: 0;
+    }
+
+    .date {
+        text-align: right;
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+
+    .header {
+        text-align: left;
+        font-size: 1.5rem;
+        text-decoration: underline;
+        margin-bottom: 0.3rem;
+    }
+
+    .readingTime {
+        text-align: left;
+    }
+
+    .abstract {
+        font-size: 1rem;
+        text-align: left;
+        margin-bottom: 1rem;
+    }
+
+    .btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 10rem;
+        height: 5rem;
+        padding: 0.5rem;
+    }
+
+}

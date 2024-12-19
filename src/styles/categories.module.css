@@ -1,0 +1,74 @@
+.table {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    opacity: 0.8;
+    background-color: rgb(200, 200, 200);
+    color: black;
+}
+
+.table thead {
+    border: 1px solid white;
+    text-align: center;
+    margin: auto;
+    padding: auto;
+    font-size: 1rem;
+}
+
+.table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: rgb(150, 150, 150);
+}
+
+.table table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.table th {
+    padding: 1.2rem;
+    background-color: rgb(15, 13, 13);
+    color: white;
+    text-align: center;
+}
+
+.table td {
+    padding: 0.5rem;
+    align-content: center;
+    box-sizing: border-box;
+}
+
+.checkbox {
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+    border: 2px solid white;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+}
+
+.checkbox:checked {
+    background-color: darkgreen;
+    border-color: darkgreen;
+}
+
+.checkbox:checked::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.link {
+    color: black;
+}

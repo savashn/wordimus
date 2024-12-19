@@ -1,0 +1,136 @@
+.card {
+    background-color: #232930;
+    padding: 0.5rem 1rem;
+    border: 2px solid white;
+    margin-bottom: 1rem;
+}
+
+.date {
+    text-align: right;
+    font-size: 1rem;
+}
+
+.header {
+    text-align: left;
+    font-size: 1.5rem;
+    text-decoration: underline;
+    margin-bottom: 0.3rem;
+}
+
+.link {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.profileContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+}
+
+.pictureWrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author {
+    text-align: left;
+    background-color: transparent;
+    padding-left: 0.5rem;
+    flex-shrink: 0;
+    font-size: 1.7rem;
+}
+
+.h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.content {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+.readingTime {
+    font-style: oblique;
+    margin-top: 0.5rem;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.button {
+    border: 2px solid darkgreen;
+    background-color: transparent;
+    border-radius: 10px;
+    width: 50%;
+    margin: 2rem 0rem;
+    padding: 0.7rem;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-style: inherit;
+}
+
+.button:hover {
+    background-color: darkgreen;
+    border-color: white;
+}
+
+
+/* PROGRESS BAR */
+
+.progressBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #f3f3f3;
+    z-index: 1000;
+}
+
+.progress {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #fceabb, #f8b500, #f85a3e);
+    transition: width 0.2s ease-out;
+}
+
+@media (max-width: 768px) {
+
+    .h1 {
+        font-size: 2rem;
+    }
+
+    .content {
+        font-size: 1.2rem;
+    }
+
+}

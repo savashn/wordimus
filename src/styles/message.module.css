@@ -1,0 +1,60 @@
+.cardContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 15rem;
+}
+
+.card {
+    background-color: #232930;
+    padding: 2rem;
+    border: 2px solid white;
+    border-radius: 0 0 30px 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.date {
+    margin: 1rem 0rem;
+}
+
+.readingTime {
+    margin-bottom: 2rem;
+}
+
+.header {
+    text-align: left;
+    font-size: 1.5rem;
+    text-decoration: underline;
+    margin-bottom: 0.3rem;
+}
+
+.readingTime {
+    text-align: left;
+}
+
+.abstract {
+    font-size: 1rem;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+
+    .cardContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card {
+        background-color: #232930;
+        padding: 0.5rem 1rem;
+        border: 2px solid white;
+        margin-bottom: 1rem;
+        border-radius: 0;
+    }
+
+}

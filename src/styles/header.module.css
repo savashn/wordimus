@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+.header {
+    width: 100%;
+    background-color: rgb(25, 25, 25);
+    height: 10vh;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    margin-bottom: 5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
+.header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: whitesmoke;
+}
+
+.emptyContainer {
+    display: flex;
+    flex: 1;
+}
+
+.appName {
+    display: flex;
+    font-size: 2.5rem;
+    text-align: left;
+    justify-content: left;
+    margin-left: 10rem;
+    color: whitesmoke;
+    text-decoration: none;
+    width: auto;
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.ul {
+    display: flex;
+    flex-direction: row;
+    margin-right: 10rem;
+    font-size: 1.2rem;
+}
+
+.li {
+    padding: 1.5rem;
+}
+
+.link {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+
+    .appName {
+        margin: 2rem;
+        font-size: 2rem;
+    }
+
+    .menuButton {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin: 2rem;
+        background: none;
+        border: none;
+        padding: 0;
+    }
+
+    .menuLine {
+        background-color: whitesmoke;
+        display: block;
+        height: 3px;
+        width: 24px;
+        border-radius: 2px;
+        transition: all 0.3s ease-out;
+    }
+
+    .menuLine {
+        margin: 3px 0;
+    }
+
+    .openLine1 {
+        transform: translateY(9px);
+    }
+
+    .openLine2 {
+        opacity: 0;
+    }
+
+    .openLine3 {
+        transform: translateY(-9px);
+    }
+
+    .menu {
+        background-color: rgb(25, 25, 25);
+        display: block;
+        width: 45%;
+        height: 100vh;
+        z-index: 999;
+        position: fixed;
+        top: 0;
+        left: 100%;
+        transition: left 0.3s ease-out;
+    }
+
+    .menuOpen {
+        left: 55%;
+    }
+
+    .ul {
+        flex-direction: column;
+        margin-top: 7rem;
+        margin-right: 0;
+    }
+
+    .li {
+        padding: 1rem;
+    }
+
+}
