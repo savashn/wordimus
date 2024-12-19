@@ -10,6 +10,7 @@ export interface Post {
     isHidden?: boolean;
     userId?: number;
     username?: string;
+    authorImg?: string;
 }
 
 export interface PostsByCategory {

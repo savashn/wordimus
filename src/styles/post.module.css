@@ -31,7 +31,7 @@
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 3rem;
+    width: auto;
 }
 
 .pictureWrapper {
@@ -84,19 +84,19 @@
 }
 
 .buttonContainer {
-    width: 100%;
+    width: 50%;
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
+    margin: 2rem auto;
 }
 
 .button {
     border: 2px solid darkgreen;
     background-color: transparent;
     border-radius: 10px;
-    width: 50%;
-    margin: 2rem 0rem;
+    width: 100%;
     padding: 0.7rem;
     color: white;
     text-decoration: none;

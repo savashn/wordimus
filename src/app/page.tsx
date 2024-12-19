@@ -44,7 +44,7 @@ export default async function Home() {
 
                     <div className={styles.pictureWrapper}>
                       <Image
-                        src="/profile.jpg"
+                        src={post.authorImg ? `${post.authorImg}` : '/profile.jpg'}
                         width={500}
                         height={500}
                         alt="Picture of the author"

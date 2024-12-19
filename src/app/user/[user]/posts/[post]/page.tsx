@@ -41,18 +41,6 @@ export default async function Page({ params }: {
     return (
         <div>
             <ProgressBar />
-            <div className={styles.profileContainer}>
-                <div className={styles.pictureWrapper}>
-                    <Image
-                        src="/profile.jpg"
-                        width={500}
-                        height={500}
-                        alt="Picture of the author"
-                        className={styles.picture}
-                    />
-                </div>
-                <p className={styles.author}>{post.author}</p>
-            </div>
 
             {admin && (
                 <Link href={`/user/${slug.user}/posts/${slug.post}/edit`} className={styles.link}>
@@ -61,6 +49,19 @@ export default async function Page({ params }: {
                     </div>
                 </Link>
             )}
+
+            <div className={styles.profileContainer}>
+                <Link href={`/user/${slug.user}`} className={`${styles.pictureWrapper} ${styles.link}`}>
+                    <Image
+                        src={post.authorImg ? `${post.authorImg}` : '/profile.jpg'}
+                        width={500}
+                        height={500}
+                        alt="Picture of the author"
+                        className={styles.picture}
+                    />
+                </Link>
+                <Link href={`/user/${slug.user}`} className={`${styles.author} ${styles.link}`}>{post.author}</Link>
+            </div>
 
             <p className={styles.date}>{new Date(post.createdAt).toLocaleDateString('en-GB')}</p>
 
