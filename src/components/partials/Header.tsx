@@ -3,11 +3,16 @@ import React, { useEffect, useState } from "react";
 import styles from "@/styles/header.module.css";
 import Link from "next/link";
 import MenuItems from "./MenuItems";
+import { usePathname } from "next/navigation";
 
 function Header() {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [windowWidth, setWindowWidth] = useState<number>(0);
     const [username, setUsername] = useState<string>('');
+
+    const isDesktop = windowWidth > 768;
+
+    const pathname = usePathname();
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -24,8 +29,6 @@ function Header() {
         }
     }, []);
 
-    const toggleMenu = () => setIsOpen((prev) => !prev);
-
     useEffect(() => {
         if (typeof window !== "undefined") {
             setWindowWidth(window.innerWidth);
@@ -37,7 +40,9 @@ function Header() {
         }
     }, []);
 
-    const isDesktop = windowWidth > 768;
+    useEffect(() => {
+        setIsOpen(false);
+    }, [pathname]);
 
     return (
         <header>
@@ -50,7 +55,7 @@ function Header() {
                 <div className={styles.emptyContainer}></div>
 
                 {!isDesktop ? (
-                    <button className={styles.menuButton} onClick={toggleMenu} aria-label="Toggle menu">
+                    <button className={styles.menuButton} onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
                         <span className={`${styles.menuLine} ${isOpen ? styles.openLine1 : ""}`}></span>
                         <span className={`${styles.menuLine} ${isOpen ? styles.openLine2 : ""}`}></span>
                         <span className={`${styles.menuLine} ${isOpen ? styles.openLine3 : ""}`}></span>
