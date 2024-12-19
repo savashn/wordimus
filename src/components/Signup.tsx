@@ -65,7 +65,7 @@ function Signup({ api }: Api) {
         }
 
         alert(text);
-        router.push('/');
+        router.push('/signin');
         return;
     }
 

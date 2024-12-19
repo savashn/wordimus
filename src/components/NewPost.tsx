@@ -108,7 +108,7 @@ function NewPost({ data, slug, api, token }: Props) {
                     ))}
                 </div>
 
-                <br /><br /><br /><br /><br />
+                <br /><br />
 
                 <button type="submit" className={styles.button}>
                     SUBMIT

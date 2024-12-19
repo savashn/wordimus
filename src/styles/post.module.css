@@ -22,6 +22,10 @@
     text-decoration: none;
 }
 
+.link:hover {
+    text-decoration: underline;
+}
+
 .profileContainer {
     display: flex;
     flex-direction: row;
@@ -64,6 +68,8 @@
     margin-top: 1rem;
     font-size: 1.5rem;
     text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .readingTime {
