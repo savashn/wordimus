@@ -11,12 +11,12 @@ export default async function Home() {
 
   const res = await fetch(`${api}/user`);
 
-  const data = await res.json();
-
   if (!res.ok) {
     console.error('API response:', res.status, await res.text());
     notFound();
   }
+
+  const data = await res.json();
 
   const posts: Post[] = ContentProcessor.processPosts(data);
 
