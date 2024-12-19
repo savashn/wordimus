@@ -48,7 +48,7 @@ function Signup({ api }: Api) {
             password
         };
 
-        const res = await fetch(`${api}/new/post`, {
+        const res = await fetch(`${api}/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ function Signup({ api }: Api) {
         }
 
         alert(text);
-        router.push(`/`);
+        router.push('/');
         return;
     }
 
