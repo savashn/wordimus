@@ -10,4 +10,4 @@ export type Auth = {
 
 export type Params = Promise<{ user: string, post?: string, username?: string, msg?: string, cat?: string }>
 
-export type SearchParams = { [id: string]: number | number[] | undefined };
+export type SearchParams = Promise<{ [id: string]: string | string[] | undefined }>;
