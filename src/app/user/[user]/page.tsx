@@ -77,8 +77,8 @@ export default async function Page({ params }: {
                 <Link href={`/user/${slug}/posts`} className={styles.btn}>SEE ALL POSTS</Link>
                 <Link href={`/user/${slug}/categories`} className={styles.btn}>SEE ALL CATEGORIES</Link>
                 {/* <Link href={`/user/${slug}/stars`} className={styles.btn}>STARRED POSTS</Link> */}
-                {usersHimself !== user.username && (
-                    <Link href={`/user/${slug}/messages`} className={styles.btn}>SEND A MESSAGE</Link>
+                {token && usersHimself !== user.username && (
+                    <Link href={`/user/${slug}/messages/new`} className={styles.btn}>SEND A MESSAGE</Link>
                 )}
             </div>
 
