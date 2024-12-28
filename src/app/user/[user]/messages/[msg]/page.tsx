@@ -3,10 +3,13 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import styles from "@/styles/post.module.css";
 import ProgressBar from "@/components/partials/ProgressBar";
+import Link from "next/link";
+import Image from "next/image";
 
 export default async function Page({ params }: {
     params: Params
 }) {
+    const slug = (await params).user;
     const msgId = (await params).msg;
     const api = process.env.API_URI;
     const cookieStore = await cookies();
@@ -30,7 +33,22 @@ export default async function Page({ params }: {
         <div>
             <ProgressBar />
 
+            <div className={styles.profileContainer}>
+                <Link href={`/user/${slug}`} className={`${styles.pictureWrapper} ${styles.link}`}>
+                    <Image
+                        src={data.senderImg ? `${data.senderImg}` : '/profile.jpg'}
+                        width={500}
+                        height={500}
+                        alt="Picture of the author"
+                        className={styles.picture}
+                    />
+                </Link>
+                <Link href={`/user/${slug}`} className={`${styles.author} ${styles.link}`}>{data.sender}</Link>
+            </div>
+
             <p className={styles.date}>{new Date(data.sentAt).toLocaleDateString('en-GB')}</p>
+
+            <p className={styles.readingTime}>Reading Time: {data.readingTime} minute</p>
 
             <div className={styles.content}>
                 {data.message}
