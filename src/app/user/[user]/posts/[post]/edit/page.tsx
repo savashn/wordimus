@@ -40,10 +40,9 @@ export default async function Page({ params }: {
 
     const post: Post = data.post;
     const categories: Category[] = data.categories;
-
-    const categoryIds = data.categories.map((cat: { id: number }) => cat.id);
+    const postCategories: number[] = data.categoryIds;
 
     return (
-        <EditPost api={api as string} slug={slug} postSlug={postSlug as string} post={post} categories={categories} token={token as string} categoryIds={categoryIds} />
+        <EditPost api={api as string} slug={slug} postSlug={postSlug as string} post={post} categories={categories} postCategories={postCategories} token={token as string} />
     )
 }

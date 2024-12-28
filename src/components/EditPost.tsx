@@ -10,15 +10,15 @@ interface EditPost {
     api: string;
     post: Post;
     categories: Category[];
+    postCategories: number[];
     token: string;
     postSlug: string;
-    categoryIds: number[];
 }
 
-function EditPost({ api, post, categories, slug, postSlug, token, categoryIds }: EditPost) {
+function EditPost({ api, post, categories, postCategories, slug, postSlug, token }: EditPost) {
     const [header, setHeader] = useState<string>(post.header);
     const [content, setContent] = useState<string>(post.content);
-    const [newCategories, setNewCategories] = useState<number[]>(categoryIds);
+    const [newCategories, setNewCategories] = useState<number[]>(postCategories);
     const [isHidden, setIsHidden] = useState<boolean>(post.isHidden as boolean)
 
     const router = useRouter();
@@ -49,9 +49,6 @@ function EditPost({ api, post, categories, slug, postSlug, token, categoryIds }:
             },
             body: JSON.stringify(data)
         });
-
-        console.log('data:', data);
-        console.log('res: ', res)
 
         const text = await res.text();
 
@@ -124,7 +121,7 @@ function EditPost({ api, post, categories, slug, postSlug, token, categoryIds }:
                 <br /><br />
 
                 <label htmlFor="isHidden">
-                    Select this box if you want this category to be hidden:
+                    Select this box if you want this post to be hidden:
                 </label>
 
                 <br />
