@@ -9,7 +9,7 @@ export default async function Page() {
     const token = cookieStore.get('x-auth-token');
 
     if (token) {
-        redirect('/dashboard');
+        redirect('/');
     }
 
     return (

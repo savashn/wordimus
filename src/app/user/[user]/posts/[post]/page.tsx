@@ -7,6 +7,7 @@ import Link from "next/link";
 import ProgressBar from "@/components/partials/ProgressBar";
 import { cookies } from "next/headers";
 import { jwtDecode } from "jwt-decode";
+import ScrollToTop from "@/components/partials/ScrollToTop";
 
 export default async function Page({ params }: {
     params: Params
@@ -89,6 +90,7 @@ export default async function Page({ params }: {
 
             <br />
 
+            <ScrollToTop />
         </div>
     )
 }

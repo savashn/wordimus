@@ -5,6 +5,7 @@ import styles from "@/styles/post.module.css";
 import ProgressBar from "@/components/partials/ProgressBar";
 import Link from "next/link";
 import Image from "next/image";
+import ScrollToTop from "@/components/partials/ScrollToTop";
 
 export default async function Page({ params }: {
     params: Params
@@ -53,6 +54,8 @@ export default async function Page({ params }: {
             <div className={styles.content}>
                 {data.message}
             </div>
+
+            <ScrollToTop />
         </div>
     )
 }
