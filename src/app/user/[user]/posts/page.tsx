@@ -24,7 +24,12 @@ export default async function Page({ params }: {
         }
     }
 
-    const res = await fetch(`${api}/user/${slug}/posts`);
+    const res = await fetch(`${api}/user/${slug}/posts`, {
+        method: 'GET',
+        headers: {
+            'x-auth-token': `${token}`
+        }
+    });
 
     if (!res.ok) {
         console.error('API response:', res.status, await res.text());
