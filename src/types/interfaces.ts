@@ -8,6 +8,7 @@ export interface Post {
     updatedAt?: Date;
     author: string;
     isHidden?: boolean;
+    isPrivate?: boolean;
     userId?: number;
     username?: string;
     authorImg?: string;

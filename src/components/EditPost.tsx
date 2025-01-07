@@ -19,7 +19,8 @@ function EditPost({ api, post, categories, postCategories, slug, postSlug, token
     const [header, setHeader] = useState<string>(post.header);
     const [content, setContent] = useState<string>(post.content);
     const [newCategories, setNewCategories] = useState<number[]>(postCategories);
-    const [isHidden, setIsHidden] = useState<boolean>(post.isHidden as boolean)
+    const [isHidden, setIsHidden] = useState<boolean>(post.isHidden as boolean);
+    const [isPrivate, setIsPrivate] = useState<boolean>(post.isPrivate as boolean);
 
     const router = useRouter();
 
@@ -38,6 +39,7 @@ function EditPost({ api, post, categories, postCategories, slug, postSlug, token
             header,
             content,
             isHidden,
+            isPrivate,
             categories: newCategories
         };
 
@@ -133,6 +135,23 @@ function EditPost({ api, post, categories, postCategories, slug, postSlug, token
                     className={checkbox.checkbox}
                     checked={isHidden}
                     onChange={() => setIsHidden(!isHidden)}
+                />
+
+                <br /><br />
+
+                <label htmlFor="isPrivate">
+                    Select this box if you want this post to be able to reach with URL only:
+                </label>
+
+                <br />
+                <br />
+
+                <input
+                    type="checkbox"
+                    id='post'
+                    className={checkbox.checkbox}
+                    checked={isPrivate}
+                    onChange={() => setIsPrivate(!isPrivate)}
                 />
 
                 <br />

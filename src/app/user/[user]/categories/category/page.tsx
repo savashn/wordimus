@@ -2,6 +2,7 @@ import { PostsByCategory } from "@/types/interfaces";
 import { Params, SearchParams } from "@/types/types";
 import styles from "@/styles/post.module.css";
 import Link from "next/link";
+import { cookies } from "next/headers";
 
 export default async function Page(props: {
     params: Params
@@ -10,6 +11,8 @@ export default async function Page(props: {
     const params = await props.params;
     const searchParams = await props.searchParams;
     const api = process.env.API_URI;
+    const cookieStore = await cookies();
+    const token = cookieStore.get('x-auth-token')?.value;
 
     const user = params.user;
 
@@ -26,7 +29,12 @@ export default async function Page(props: {
         .filter(Boolean)
         .join("&");
 
-    const res = await fetch(`${api}/user/${user}/categories/category?${query}`);
+    const res = await fetch(`${api}/user/${user}/categories/category?${query}`, {
+        method: 'GET',
+        headers: {
+            'x-auth-token': `${token}`
+        }
+    });
 
     if (!res.ok) {
         return (
