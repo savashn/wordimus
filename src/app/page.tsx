@@ -93,7 +93,7 @@ export default async function Home() {
 
       <footer className={styles.footer}>
         <p className={styles.footerContent}>
-          Wordimus &copy; 2024 All rights reserved.
+          Wordimus &copy; 2025 All rights reserved.
         </p>
       </footer>
     </>
