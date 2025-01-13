@@ -21,6 +21,7 @@ function EditPost({ api, post, categories, postCategories, slug, postSlug, token
     const [newCategories, setNewCategories] = useState<number[]>(postCategories);
     const [isHidden, setIsHidden] = useState<boolean>(post.isHidden as boolean);
     const [isPrivate, setIsPrivate] = useState<boolean>(post.isPrivate as boolean);
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
 
     const router = useRouter();
 
@@ -63,6 +64,34 @@ function EditPost({ api, post, categories, postCategories, slug, postSlug, token
         alert(text);
         router.push(`/user/${slug}`);
         return;
+    }
+
+    const handleDelete = async () => {
+        try {
+            const res = await fetch(`${api}/delete/posts/${postSlug}`, {
+                method: 'DELETE',
+                headers: {
+                    'x-auth-token': `${token}`
+                }
+            });
+
+            const text = await res.text();
+
+            if (!res.ok) {
+                alert(text || 'An unknown error occurred.');
+                window.location.reload();
+                return;
+            }
+
+            alert(text);
+            router.push(`/user/${slug}`);
+            return;
+
+        } catch (err) {
+            console.log(err);
+            alert('An unknown error occurred.');
+            return;
+        }
     }
 
     return (
@@ -156,11 +185,38 @@ function EditPost({ api, post, categories, postCategories, slug, postSlug, token
 
                 <br />
 
-                <button type="submit" className={styles.button}>
-                    SUBMIT
-                </button>
+                <div className={styles.container}>
+                    <button type="submit" className={styles.button}>
+                        SUBMIT
+                    </button>
+                    <button type='button' className={styles.button} onClick={() => setModalOpen(true)} style={{ marginLeft: 'auto' }}>
+                        DELETE
+                    </button>
+                </div>
 
             </form>
+
+            {modalOpen && (
+                <div
+                    className={styles.modal}
+                    onClick={(e) => {
+                        if (e.target === e.currentTarget) setModalOpen(false);
+                    }}
+                >
+                    <div className={styles.modalContent}>
+                        <button className={styles.closeButton} onClick={() => setModalOpen(false)}>
+                            &times;
+                        </button>
+                        <h2 className={styles.title}>Delete Post</h2>
+                        <br />
+                        <p className={styles.text}>Are you sure you want to delete this post?</p>
+                        <br />
+                        <button className={styles.confirmButton} onClick={() => { handleDelete(); setModalOpen(false); }}>
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

@@ -16,6 +16,7 @@ function EditProfile({ api, data, token, slug }: EditProfileProps) {
     const [email, setEmail] = useState<string>(data.email as string);
     const [image, setImage] = useState<File | null>(null);
     const [about, setAbout] = useState<string>(data.about ?? '');
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
 
     const router = useRouter();
 
@@ -50,6 +51,34 @@ function EditProfile({ api, data, token, slug }: EditProfileProps) {
 
         alert('Success!');
         router.push(`/user/${slug}`)
+    }
+
+    const handleDelete = async () => {
+        try {
+            const res = await fetch(`${api}/delete/user`, {
+                method: 'DELETE',
+                headers: {
+                    'x-auth-token': `${token}`
+                }
+            });
+
+            const text = await res.text();
+
+            if (!res.ok) {
+                alert(text || 'An unknown error occurred.');
+                window.location.reload();
+                return;
+            }
+
+            alert(text);
+            router.push(`/user/${slug}`);
+            return;
+
+        } catch (err) {
+            console.log(err);
+            alert('An unknown error occurred.');
+            return;
+        }
     }
 
     return (
@@ -102,12 +131,39 @@ function EditProfile({ api, data, token, slug }: EditProfileProps) {
                 />
                 {image && <p>Seçilen dosya: {image.name}</p>}
 
-                <br /><br /><br />
+                <br />
+            </form>
 
+            <div className={styles.container}>
                 <button type="submit" className={styles.button}>
                     SUBMIT
                 </button>
-            </form>
+                <button type='button' className={styles.button} onClick={() => setModalOpen(true)} style={{ marginLeft: 'auto' }}>
+                    DELETE
+                </button>
+            </div>
+
+            {modalOpen && (
+                <div
+                    className={styles.modal}
+                    onClick={(e) => {
+                        if (e.target === e.currentTarget) setModalOpen(false);
+                    }}
+                >
+                    <div className={styles.modalContent}>
+                        <button className={styles.closeButton} onClick={() => setModalOpen(false)}>
+                            &times;
+                        </button>
+                        <h2 className={styles.title}>Delete Account</h2>
+                        <br />
+                        <p className={styles.text}>Are you sure you want to delete your account? All of your posts is also going to be deleted.</p>
+                        <br />
+                        <button className={styles.confirmButton} onClick={() => { handleDelete(); setModalOpen(false); }}>
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

@@ -77,6 +77,68 @@
     background-color: darkgreen !important;
 }
 
+
+
+/* MODAL */
+
+.modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid darkgreen;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 30%;
+    text-align: center;
+    position: relative;
+    background-color: rgb(43, 43, 43);
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff5c5c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.closeButton:hover {
+    background-color: #ff3b3b;
+}
+
+.confirmButton {
+    background-color: darkgreen;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.confirmButton:hover {
+    background-color: rgb(3, 73, 3);
+}
+
+
 @media (max-width: 768px) {
 
     .input {
@@ -87,4 +149,7 @@
         width: 100%;
     }
 
+    .modalContent {
+        width: 75%;
+    }
 }
