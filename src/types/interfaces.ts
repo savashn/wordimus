@@ -27,6 +27,7 @@ export interface Category {
     slug: string;
     postsCount?: number;
     isHidden: boolean;
+    isPrivate?: boolean;
     userId?: number;
 }
 

@@ -16,6 +16,7 @@ interface EditCategory {
 function EditCategory({ slug, api, data, token, cat }: EditCategory) {
     const [category, setCategory] = useState<string>(data.category);
     const [isHidden, setIsHidden] = useState<boolean>(data.isHidden);
+    const [isPrivate, setIsPrivate] = useState<boolean>(data.isPrivate as boolean);
     const [modalOpen, setModalOpen] = useState<boolean>(false);
 
     const router = useRouter();
@@ -26,6 +27,7 @@ function EditCategory({ slug, api, data, token, cat }: EditCategory) {
         const data = {
             category,
             isHidden,
+            isPrivate
         };
 
         const res = await fetch(`${api}/edit/${slug}/category/${cat}`, {
@@ -109,6 +111,24 @@ function EditCategory({ slug, api, data, token, cat }: EditCategory) {
                     className={checkbox.checkbox}
                     checked={isHidden}
                     onChange={() => setIsHidden(!isHidden)}
+                />
+
+                <br />
+                <br />
+
+                <label htmlFor="isPrivate">
+                    Select this box if you want this post to be able to reach with URL only:
+                </label>
+
+                <br />
+                <br />
+
+                <input
+                    type="checkbox"
+                    id='post'
+                    className={checkbox.checkbox}
+                    checked={isPrivate}
+                    onChange={() => setIsPrivate(!isPrivate)}
                 />
 
                 <br />
