@@ -9,6 +9,7 @@ function MenuItems({ username }: Auth) {
     const handleSignout = () => {
         document.cookie = 'x-auth-token=; Max-Age=0; path=/; secure; SameSite=Strict';
         router.push('/');
+        window.location.reload();
     }
 
     return (
