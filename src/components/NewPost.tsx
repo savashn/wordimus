@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import styles from '@/styles/input.module.css';
+import checkbox from '@/styles/categories.module.css';
 import { Category } from '@/types/interfaces';
 import { useRouter } from 'next/navigation';
 
@@ -15,6 +16,8 @@ function NewPost({ data, slug, api, token }: Props) {
     const [header, setHeader] = useState<string>('');
     const [content, setContent] = useState<string>('');
     const [categories, setCategories] = useState<number[]>([]);
+    const [isHidden, setIsHidden] = useState<boolean>(false);
+    const [isPrivate, setIsPrivate] = useState<boolean>(false);
 
     const handleCategorySelect = (id: number) => {
         setCategories((prevCategories) => {
@@ -34,7 +37,9 @@ function NewPost({ data, slug, api, token }: Props) {
         const data = {
             header,
             content,
-            categories
+            categories,
+            isHidden,
+            isPrivate
         };
 
         const res = await fetch(`${api}/new/post`, {
@@ -107,6 +112,39 @@ function NewPost({ data, slug, api, token }: Props) {
                         </div>
                     ))}
                 </div>
+
+                <br /><br />
+
+                <label htmlFor="isHidden">
+                    Select this box if you want this post to be hidden:
+                </label>
+
+                <br /><br />
+
+                <input
+                    type="checkbox"
+                    id='post'
+                    className={checkbox.checkbox}
+                    checked={isHidden}
+                    onChange={() => setIsHidden(!isHidden)}
+                />
+
+                <br /><br />
+
+                <label htmlFor="isPrivate">
+                    Select this box if you want this post to be able to reach with URL only:
+                </label>
+
+                <br />
+                <br />
+
+                <input
+                    type="checkbox"
+                    id='post'
+                    className={checkbox.checkbox}
+                    checked={isPrivate}
+                    onChange={() => setIsPrivate(!isPrivate)}
+                />
 
                 <br /><br />
 

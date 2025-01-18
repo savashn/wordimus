@@ -95,26 +95,8 @@ function EditCategory({ slug, api, data, token, cat }: EditCategory) {
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                 />
-                <br />
+
                 <br /><br />
-
-                <label htmlFor="isHidden">
-                    Select this box if you want this category to be hidden:
-                </label>
-
-                <br />
-                <br />
-
-                <input
-                    type="checkbox"
-                    id='category'
-                    className={checkbox.checkbox}
-                    checked={isHidden}
-                    onChange={() => setIsHidden(!isHidden)}
-                />
-
-                <br />
-                <br />
 
                 <label htmlFor="isPrivate">
                     Select this box if you want this post to be able to reach with URL only:
