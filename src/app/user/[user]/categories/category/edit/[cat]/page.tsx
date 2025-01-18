@@ -19,6 +19,7 @@ export default async function Page({ params }: {
         const username = decodedToken.username;
 
         if (username !== slug) {
+            console.log('username and slug is not compatible')
             notFound();
         }
     }
@@ -32,7 +33,9 @@ export default async function Page({ params }: {
     });
 
     if (!res.ok) {
-        console.error('API response:', res.status, await res.text());
+        const msg = await res.text()
+        console.log('API response:', res.status);
+        console.log(msg);
         notFound();
     }
 
