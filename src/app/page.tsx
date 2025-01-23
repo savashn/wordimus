@@ -9,7 +9,10 @@ import { notFound } from "next/navigation";
 export default async function Home() {
   const api = process.env.API_URI;
 
-  const res = await fetch(`${api}/user`);
+  const res = await fetch(`${api}/user`, {
+    method: 'GET',
+    cache: 'no-store'
+  });
 
   if (!res.ok) {
     console.error('API response:', res.status, await res.text());
