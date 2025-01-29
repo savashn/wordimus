@@ -15,7 +15,6 @@ interface EditCategory {
 
 function EditCategory({ slug, api, data, token, cat }: EditCategory) {
     const [category, setCategory] = useState<string>(data.category);
-    const [isHidden, setIsHidden] = useState<boolean>(data.isHidden);
     const [isPrivate, setIsPrivate] = useState<boolean>(data.isPrivate as boolean);
     const [modalOpen, setModalOpen] = useState<boolean>(false);
 
@@ -26,7 +25,6 @@ function EditCategory({ slug, api, data, token, cat }: EditCategory) {
 
         const data = {
             category,
-            isHidden,
             isPrivate
         };
 
